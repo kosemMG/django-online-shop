@@ -1,0 +1,149 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            {{ title | capfirst }}
+        {% endblock title %}
+    </title>
+    {% block css %}
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,700i,900" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+              integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock css %}
+</head>
+
+<body class="{{ body_class }}" data-page="index">
+<div class="mega-container">
+    <div class="top">
+        <header>
+            <div class="header-flex container">
+                <div class="header-left">
+                    <a class="logo" href="{% url 'home' %}">
+                        <img src="{% static 'img/logo.png' %}" alt="logo"><span class="logo-text">BRAN<span
+                            class="logo-text-last-letter">D</span></span>
+                    </a>
+                    <form class="form" action="#">
+                        <div class="browse-box">
+                            <button class="browse" type="button">Browse <img src="{% static 'img/sort-down-solid.svg' %}"
+                                                                             alt="arrow_down"></button>
+                            <div class="drop-down">
+                                {% include 'mainapp/includes/dropdown_menu.html' %}
+                            </div>
+                        </div>
+
+                        <input class="text-search" type="text" placeholder="Search for Item...">
+                        <button class="search" type="submit"><img src="{% static 'img/search.png' %}" alt="search"></button>
+                    </form>
+                </div>
+                <div class="header-right">
+                    <div class="cart-box">
+                        <div class="goods-number"></div>
+                        <a class="cart" href="{% url 'cart' %}"><img src="{% static 'img/cart.svg' %}" alt="cart"></a>
+                        <div class="cart-drop" id="cart-drop"></div>
+                    </div>
+                    <a class="account" href="#">My&nbsp;Account <img src="{% static 'img/arrow_down.png' %}" alt="arrow_down"></a>
+                </div>
+            </div>
+        </header>
+        <nav class="navigation">
+            {% include 'mainapp/includes/menu.html' %}
+        </nav>
+
+        {% block content %}
+        {% endblock content %}
+
+    </div>
+    {% block footer %}
+        <footer>
+            <div class="top-footer container">
+                <article class="brand">
+                    <h2><a class="logo" href="{% url 'home' %}">
+                        <img src="{% static 'img/logo.png' %}" alt="logo"><span class="logo-text">BRAN<span
+                            class="logo-text-last-letter">D</span></span>
+                    </a></h2>
+                    <p>Objectively transition extensive data rather than cross functional solutions. Monotonectally
+                        syndicate multidisciplinary materials before go&nbsp;forward benefits. Intrinsicly syndicate an&nbsp;expanded
+                        array of&nbsp;processes and cross-unit partnerships.<br><br>
+
+                        Efficiently plagiarize 24/365 action items and focused infomediaries.<br>
+                        Distinctively seize superior initiatives for wireless technologies. Dynamically
+                        optimize.<br><br>
+                    </p>
+                </article>
+                <article class="info">
+                    <h4>COMPANY</h4>
+                    <nav class="foot-nav">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="#">Shop</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">How It&nbsp;Works</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </nav>
+                </article>
+                <article class="info">
+                    <h4>INFORMATION</h4>
+                    <nav class="foot-nav">
+                        <ul>
+                            <li><a href="#">Terms &amp;&nbsp;Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">How to&nbsp;Buy</a></li>
+                            <li><a href="#">How to&nbsp;Sell</a></li>
+                            <li><a href="#">Promotion</a></li>
+                        </ul>
+                    </nav>
+                </article>
+                <article class="info">
+                    <h4>SHOP CATEGORY</h4>
+                    <nav class="foot-nav">
+                        <ul>
+                            <li><a href="{% url 'product' %}">Men</a></li>
+                            <li><a href="#">Women</a></li>
+                            <li><a href="#">Children</a></li>
+                            <li><a href="#">Apparel</a></li>
+                            <li><a href="#">Browse All</a></li>
+                        </ul>
+                    </nav>
+                </article>
+            </div>
+            <div class="bottom-footer">
+                <div class="bottom-footer-flex container">
+                    <p>&copy;&nbsp;{% now 'Y' %} Brand All Rights Reserved.</p>
+                    <div class="social">
+                        <a class="transform_scale transform-all_transition" href="#"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="transform_scale transform-all_transition" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="transform_scale transform-all_transition" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="transform_scale transform-all_transition" href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a class="transform_scale transform-all_transition" href="#"><i
+                                class="fab fa-google-plus-g"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    {% endblock footer %}
+</div>
+{% block js %}
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/cart-drop.js' %}"></script>
+    <script src="{% static 'js/products.js' %}"></script>
+    <script>
+        $(document).ready(() => {
+            let source = 'js/get-cart.json',
+                brandCartDrop = new CartDrop(source),
+                products = new Products(source);
+        });
+    </script>
+{% endblock js %}
+</body>
+
+</html>

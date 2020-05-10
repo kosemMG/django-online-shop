@@ -1,0 +1,20 @@
+{% load static %}
+
+{% for product in products %}
+    <div class="item transform_scale">
+        <a href="/{{ product.link }}" class="product">
+            <img src="{% static product.img %}" alt="" class="product-img">
+            <p class="product-name">{{ product.name }}</p>
+            <p class="product-price">${{ product.price }}</p>
+        </a>
+        <div class="active">
+            <a href="#" class="add-to-cart rotate-scale-up" data-id="{{ product.id }}"
+               data-img="{{ product.img }}" data-name="{{ product.name }}" data-color="{{ product.color }}"
+               data-size="{{ product.size }}" data-price="{{ product.price }}"
+               data-quantity="{{ product.quantity }}"
+               data-shipping="{{ product.shipping }}" data-link="{{ product.link }}">
+                <img src="{% static 'img/cart_white.svg' %}" alt="white cart">Add to&nbsp;Cart
+            </a>
+        </div>
+    </div>
+{% endfor %}
