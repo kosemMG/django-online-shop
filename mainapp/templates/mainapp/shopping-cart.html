@@ -30,7 +30,7 @@
             <tr class="cart-item" data-product="{{ product.id }}">
                 <td>
                     <a class="prod-info transform_scale" href="/{{ product.link }}">
-                        <img class="cart-product-image" src="{% static product.img %}" alt="product">
+                        <img class="cart-product-image" src="/media/{{ product.img }}" alt="product">
                         <h4 class="product-cart-name">{{ product.name }}</h4>
                         <p class="prod-det"><span>Color: </span>{{ product.color }}</p>
                         <p class="prod-det"><span>Size: </span>{{ product.size }}</p>
