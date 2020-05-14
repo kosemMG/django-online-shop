@@ -1,0 +1,10 @@
+<ul class="menu container">
+    {% for item in menu %}
+        <li class="menu__list transform_scale">
+            <a href="{{ item.url }}" class="menu__link">{{ item.title }}</a>
+            <div class="mega-menu">
+                {% include 'mainapp/includes/mega_menu.html' %}
+            </div>
+        </li>
+    {% endfor %}
+</ul>
