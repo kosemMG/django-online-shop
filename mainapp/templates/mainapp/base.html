@@ -32,15 +32,17 @@
                     </a>
                     <form class="form" action="#">
                         <div class="browse-box">
-                            <button class="browse" type="button">Browse <img src="{% static 'img/sort-down-solid.svg' %}"
-                                                                             alt="arrow_down"></button>
+                            <button class="browse" type="button">Browse <img
+                                    src="{% static 'img/sort-down-solid.svg' %}"
+                                    alt="arrow_down"></button>
                             <div class="drop-down">
                                 {% include 'mainapp/includes/dropdown_menu.html' %}
                             </div>
                         </div>
 
                         <input class="text-search" type="text" placeholder="Search for Item...">
-                        <button class="search" type="submit"><img src="{% static 'img/search.png' %}" alt="search"></button>
+                        <button class="search" type="submit"><img src="{% static 'img/search.png' %}" alt="search">
+                        </button>
                     </form>
                 </div>
                 <div class="header-right">
@@ -49,7 +51,23 @@
                         <a class="cart" href="{% url 'cart' %}"><img src="{% static 'img/cart.svg' %}" alt="cart"></a>
                         <div class="cart-drop" id="cart-drop"></div>
                     </div>
-                    <a class="account" href="#">My&nbsp;Account <img src="{% static 'img/arrow_down.png' %}" alt="arrow_down"></a>
+                    <a class="account" href="#">My&nbsp;Account <img src="{% static 'img/arrow_down.png' %}"
+                                                                     alt="arrow_down"></a>
+
+                    {% if user.is_authenticated %}
+                        <div>
+                            <a href="{% url 'auth:edit' %}">
+                                {{ user.first_name|default:'User' }}
+                            </a>
+                        </div>
+                    {% endif %}
+                    <div>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'auth:logout' %}">Login</a>
+                        {% else %}
+                            <a href="{% url 'auth:login' %}">Logout</a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </header>
