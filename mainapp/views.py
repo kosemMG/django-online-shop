@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.conf import settings
 from json import load
+from .models import ProductCategory, Product
 
 SHOP_NAME = 'BRAND'
 STATIC_DATA = 'static/data/'
@@ -23,12 +25,13 @@ def get_data_from_json(src: str):
 def main(request):
     title = 'home - ' + SHOP_NAME
     body_class = 'home'
-    products = get_data_from_json(STATIC_DATA + 'home_products.json')
+    home_products = Product.objects.filter(category_id=1)
+    # products = get_data_from_json(STATIC_DATA + 'home_products.json')
     content = {
         'title': title,
         'body_class': body_class,
         'menu': menu,
-        'products': products
+        'products': home_products
     }
     return render(request, 'mainapp/index.html', content)
 
@@ -47,7 +50,8 @@ def checkout(request):
 def product(request):
     title = 'product - ' + SHOP_NAME
     body_class = 'products'
-    products = get_data_from_json(STATIC_DATA + 'products.json')
+    # products = get_data_from_json(STATIC_DATA + 'products.json')
+    products = Product.objects.filter(category_id=2)
     content = {
         'title': title,
         'body_class': body_class,
@@ -60,12 +64,13 @@ def product(request):
 def cart(request):
     title = 'shopping cart - ' + SHOP_NAME
     body_class = 'products'
-    products = get_data_from_json(STATIC_DATA + 'cart_products.json')
+    # products = get_data_from_json(STATIC_DATA + 'cart_products.json')
+    cart_products = Product.objects.filter(category_id=4)
     content = {
         'title': title,
         'body_class': body_class,
         'menu': menu,
-        'products': products
+        'products': cart_products
     }
     return render(request, 'mainapp/shopping-cart.html', content)
 
@@ -73,11 +78,12 @@ def cart(request):
 def single_page(request):
     title = 'single page - ' + SHOP_NAME
     body_class = 'single-page'
-    products = get_data_from_json(STATIC_DATA + 'page_products.json')
+    # products = get_data_from_json(STATIC_DATA + 'page_products.json')
+    page_products = Product.objects.filter(category_id=3)
     content = {
         'title': title,
         'body_class': body_class,
         'menu': menu,
-        'products': products
+        'products': page_products
     }
     return render(request, 'mainapp/single-page.html', content)

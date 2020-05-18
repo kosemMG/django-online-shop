@@ -3,7 +3,7 @@
 {% for product in products %}
     <div class="item transform_scale">
         <a href="/{{ product.link }}" class="product">
-            <img src="{% static product.img %}" alt="" class="product-img">
+            <img src="/media/{{ product.img }}" alt="" class="product-img">
             <p class="product-name">{{ product.name }}</p>
             <p class="product-price">${{ product.price }}</p>
         </a>
