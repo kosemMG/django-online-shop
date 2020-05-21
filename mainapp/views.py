@@ -22,7 +22,7 @@ def main(request):
     home_products = Product.objects.filter(category__pk=1).order_by('price')
 
     products = []
-    cart_products = Cart.objects.filter(user=request.user)
+    cart_products = Cart.objects.filter()
 
     for i, cart_product in enumerate(cart_products):
         products.append(Product.objects.get(pk=cart_product.product_id))
