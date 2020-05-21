@@ -1,0 +1,362 @@
+[
+  {
+    "model": "mainapp.product",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "name": "Mango People T-shirt",
+      "img": "product_img/white_shirt_guy.jpg",
+      "color": "red",
+      "size": "XII",
+      "price": "52.00",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 2,
+    "fields": {
+      "category": 1,
+      "name": "Pink Girl Shirt",
+      "img": "product_img/pink_girl.jpg",
+      "color": "pink",
+      "size": "S",
+      "price": "34.00",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 3,
+    "fields": {
+      "category": 1,
+      "name": "Dark Blue Jacket",
+      "img": "product_img/backpack_guy.jpg",
+      "color": "dark-blue",
+      "size": "XL",
+      "price": "69.90",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 4,
+    "fields": {
+      "category": 1,
+      "name": "Flower Dress",
+      "img": "product_img/flower_girl.jpg",
+      "color": "white",
+      "size": "M",
+      "price": "49.00",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 5,
+    "fields": {
+      "category": 1,
+      "name": "Stripped Dress",
+      "img": "product_img/strip_girl.jpg",
+      "color": "black-white",
+      "size": "M",
+      "price": "49.00",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 6,
+    "fields": {
+      "category": 1,
+      "name": "Light Grey Costume",
+      "img": "product_img/cap_guy.jpg",
+      "color": "light-grey",
+      "size": "M",
+      "price": "69.90",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 7,
+    "fields": {
+      "category": 1,
+      "name": "Cream Trousers",
+      "img": "product_img/pants_guy.jpg",
+      "color": "cream",
+      "size": "X",
+      "price": "45.00",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 8,
+    "fields": {
+      "category": 1,
+      "name": "Dark Sweater",
+      "img": "product_img/shorts_guy.jpg",
+      "color": "dark-blue",
+      "size": "XL",
+      "price": "39.90",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 9,
+    "fields": {
+      "category": 2,
+      "name": "Black Hood Coat",
+      "img": "product_img/hood-guy.jpg",
+      "color": "black",
+      "size": "XL",
+      "price": "79.90",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 10,
+    "fields": {
+      "category": 2,
+      "name": "Black Coat",
+      "img": "product_img/coat-guy.jpg",
+      "color": "black",
+      "size": "XXL",
+      "price": "99.00",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 11,
+    "fields": {
+      "category": 2,
+      "name": "Dark Blue Jacket",
+      "img": "product_img/backpack_guy.jpg",
+      "color": "dark-blue",
+      "size": "XL",
+      "price": "69.90",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 12,
+    "fields": {
+      "category": 2,
+      "name": "Grey Shirt",
+      "img": "product_img/beard-grey-guy.jpg",
+      "color": "grey",
+      "size": "X",
+      "price": "29.00",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 13,
+    "fields": {
+      "category": 2,
+      "name": "Dark Sweater",
+      "img": "product_img/shorts_guy.jpg",
+      "color": "dark-blue",
+      "size": "XL",
+      "price": "39.90",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 14,
+    "fields": {
+      "category": 2,
+      "name": "Dark Blue Vest",
+      "img": "product_img/beard-pink-guy.jpg",
+      "color": "dark-blue",
+      "size": "XL",
+      "price": "39.90",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 15,
+    "fields": {
+      "category": 2,
+      "name": "Light Grey Costume",
+      "img": "product_img/cap_guy.jpg",
+      "color": "light-grey",
+      "size": "M",
+      "price": "69.90",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 16,
+    "fields": {
+      "category": 2,
+      "name": "Brown Coat",
+      "img": "product_img/coat-light-guy.jpg",
+      "color": "brown",
+      "size": "XXL",
+      "price": "79.90",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 17,
+    "fields": {
+      "category": 2,
+      "name": "Light Blue Shirt",
+      "img": "product_img/beard-violet-guy.jpg",
+      "color": "light-blue",
+      "size": "M",
+      "price": "39.90",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 18,
+    "fields": {
+      "category": 3,
+      "name": "Black Women Suit",
+      "img": "product_img/like-girl-1.jpg",
+      "color": "black",
+      "size": "M",
+      "price": "79.90",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 19,
+    "fields": {
+      "category": 3,
+      "name": "Motley Skirt",
+      "img": "product_img/like-girl-2.jpg",
+      "color": "colourful",
+      "size": "M",
+      "price": "45.00",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 20,
+    "fields": {
+      "category": 3,
+      "name": "Yellow Shirt",
+      "img": "product_img/like-girl-3.jpg",
+      "color": "yellow",
+      "size": "S",
+      "price": "34.00",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 21,
+    "fields": {
+      "category": 3,
+      "name": "Light Grey Shirt",
+      "img": "product_img/like-girl-4.jpg",
+      "color": "light-grey",
+      "size": "M",
+      "price": "35.00",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 22,
+    "fields": {
+      "category": 4,
+      "name": "Brown Hood Coat",
+      "img": "product_img/product-1.jpg",
+      "color": "brown",
+      "size": "XL",
+      "price": "78.00",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 23,
+    "fields": {
+      "category": 4,
+      "name": "Brown Coat",
+      "img": "product_img/product-2.jpg",
+      "color": "brown",
+      "size": "XL",
+      "price": "89.00",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 24,
+    "fields": {
+      "category": 4,
+      "name": "Short Coat",
+      "img": "product_img/product-3.jpg",
+      "color": "black",
+      "size": "XL",
+      "price": "69.00",
+      "quantity": 1,
+      "shipping": "FREE",
+      "link": "single-page"
+    }
+  }
+]
