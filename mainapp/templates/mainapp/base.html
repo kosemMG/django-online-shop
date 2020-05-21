@@ -57,18 +57,18 @@
                                                                      alt="arrow_down"></a>
 
                     {% if user.is_authenticated %}
-                        <div class="welcome">
+                        <div style="color: #222222; font-size: 14px; font-weight: 700; padding: 20px;">
                             Welcome,
                             <a href="{% url 'auth:edit' %}">
                                 {{ user.first_name|default:'User' }}&nbsp;
                             </a>
                         </div>
                     {% endif %}
-                    <div class="login">
+                    <div>
                         {% if user.is_authenticated %}
-                            <a href="{% url 'auth:logout' %}">Logout</a>
+                            <a class="menu__link" href="{% url 'auth:logout' %}">Logout</a>
                         {% else %}
-                            <a href="{% url 'auth:login' %}">Login</a>
+                            <a class="menu__link" href="{% url 'auth:login' %}">Login</a>
                         {% endif %}
                     </div>
                 </div>
