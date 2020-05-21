@@ -58,9 +58,8 @@
 
                     {% if user.is_authenticated %}
                         <div class="welcome">
-                            Welcome,
                             <a href="{% url 'auth:edit' %}">
-                                {{ user.first_name|default:'User' }}&nbsp;
+                                Welcome, {{ user.first_name|default:'User' }}
                             </a>
                         </div>
                     {% endif %}

@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from django.conf import settings
-from json import load
-from .models import ProductCategory, Product
+from .models import Product
+from cartapp.models import Cart
 
 SHOP_NAME = 'BRAND'
 STATIC_DATA = 'static/data/'
@@ -17,20 +16,16 @@ menu = [
 ]
 
 
-def get_data_from_json(src: str):
-    with open(src) as file:
-        return load(file)
-
-
 def main(request):
     title = 'home - ' + SHOP_NAME
     body_class = 'home'
-    home_products = Product.objects.filter(category_id=1)
-    # products = get_data_from_json(STATIC_DATA + 'home_products.json')
+    home_products = Product.objects.filter(category__pk=1).order_by('price')
+    cart_amount = len(Cart.objects.all())
     content = {
         'title': title,
         'body_class': body_class,
         'menu': menu,
+        'cart_amount': cart_amount,
         'products': home_products
     }
     return render(request, 'mainapp/index.html', content)
@@ -50,8 +45,7 @@ def checkout(request):
 def product(request):
     title = 'product - ' + SHOP_NAME
     body_class = 'products'
-    # products = get_data_from_json(STATIC_DATA + 'products.json')
-    products = Product.objects.filter(category_id=2)
+    products = Product.objects.filter(category__pk=2).order_by('price')
     content = {
         'title': title,
         'body_class': body_class,
@@ -61,25 +55,23 @@ def product(request):
     return render(request, 'mainapp/product.html', content)
 
 
-def cart(request):
-    title = 'shopping cart - ' + SHOP_NAME
-    body_class = 'products'
-    # products = get_data_from_json(STATIC_DATA + 'cart_products.json')
-    cart_products = Product.objects.filter(category_id=4)
-    content = {
-        'title': title,
-        'body_class': body_class,
-        'menu': menu,
-        'products': cart_products
-    }
-    return render(request, 'mainapp/shopping-cart.html', content)
+# def cart(request):
+#     title = 'shopping cart - ' + SHOP_NAME
+#     body_class = 'products'
+#     cart_products = Product.objects.filter(category__pk=4).order_by('price')
+#     content = {
+#         'title': title,
+#         'body_class': body_class,
+#         'menu': menu,
+#         'products': cart_products
+#     }
+#     return render(request, 'mainapp/../cartapp/templates/cartapp/shopping-cart.html', content)
 
 
 def single_page(request):
     title = 'single page - ' + SHOP_NAME
     body_class = 'single-page'
-    # products = get_data_from_json(STATIC_DATA + 'page_products.json')
-    page_products = Product.objects.filter(category_id=3)
+    page_products = Product.objects.filter(category__pk=3).order_by('price')
     content = {
         'title': title,
         'body_class': body_class,

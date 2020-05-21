@@ -24,11 +24,12 @@ import mainapp.views as mainapp
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mainapp.main, name='home'),
-    path('cart/', mainapp.cart, name='cart'),
+    # path('cart/', mainapp.cart, name='cart'),
     path('checkout/', mainapp.checkout, name='checkout'),
     path('product/', mainapp.product, name='product'),
     path('single-page/', mainapp.single_page, name='single_page'),
-    path('auth/', include('authapp.urls', namespace='auth'))
+    path('auth/', include('authapp.urls', namespace='auth')),
+    path('cart/', include('cartapp.urls', namespace='cart'))
 ]
 
 if settings.DEBUG:

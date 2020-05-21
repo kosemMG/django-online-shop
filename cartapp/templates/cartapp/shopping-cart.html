@@ -37,7 +37,7 @@
                     </a>
                 </td>
                 <td>$&nbsp;{{ product.price }}</td>
-                <td><input class="prod-quantity" type="number" value="2" name="quant"></td>
+                <td><input class="prod-quantity" type="number" value="{{ product.amount }}" name="quant"></td>
                 <td>{{ product.shipping }}</td>
                 <td>$&nbsp;300</td>
                 <td><i class="fas fa-times-circle shut transform_scale" data-id="{{ product.id }}"></i></td>

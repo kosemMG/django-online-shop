@@ -2220,3 +2220,13 @@ header {
 #my-form {
     width: 420px;
 }
+
+.header-right .cart-box .welcome,
+.header-right .cart-box .login {
+    color: #222222;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+    padding: 20px;
+}

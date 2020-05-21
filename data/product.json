@@ -313,50 +313,5 @@
       "shipping": "FREE",
       "link": "single-page"
     }
-  },
-  {
-    "model": "mainapp.product",
-    "pk": 22,
-    "fields": {
-      "category": 4,
-      "name": "Brown Hood Coat",
-      "img": "product_img/product-1.jpg",
-      "color": "brown",
-      "size": "XL",
-      "price": "78.00",
-      "quantity": 1,
-      "shipping": "FREE",
-      "link": "single-page"
-    }
-  },
-  {
-    "model": "mainapp.product",
-    "pk": 23,
-    "fields": {
-      "category": 4,
-      "name": "Brown Coat",
-      "img": "product_img/product-2.jpg",
-      "color": "brown",
-      "size": "XL",
-      "price": "89.00",
-      "quantity": 1,
-      "shipping": "FREE",
-      "link": "single-page"
-    }
-  },
-  {
-    "model": "mainapp.product",
-    "pk": 24,
-    "fields": {
-      "category": 4,
-      "name": "Short Coat",
-      "img": "product_img/product-3.jpg",
-      "color": "black",
-      "size": "XL",
-      "price": "69.00",
-      "quantity": 1,
-      "shipping": "FREE",
-      "link": "single-page"
-    }
   }
 ]

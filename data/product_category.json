@@ -19,12 +19,5 @@
     "fields": {
       "name": "page_products"
     }
-  },
-  {
-    "model": "mainapp.productcategory",
-    "pk": 4,
-    "fields": {
-      "name": "cart_products"
-    }
   }
 ]
