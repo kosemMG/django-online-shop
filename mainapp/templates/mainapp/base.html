@@ -51,7 +51,30 @@
                             <div class="goods-number">{{ cart_amount }}</div>
                         {% endif %}
                         <a class="cart" href="{% url 'cart:view' %}"><img src="{% static 'img/cart.svg' %}" alt="cart"></a>
-                        <div class="cart-drop" id="cart-drop"></div>
+                        <div class="cart-drop" id="cart-drop">
+                            {% if user.is_authenticated and cart_amount > 0 %}
+                                {% for cart_product in cart_products %}
+                                    <div class="cart-drop-flex" data-elemid="17"><a class="cart-product" href="#">
+                                        <img src="/media/{{ cart_product.img }}" alt="product" class="cart-product__img">
+                                    </a>
+                                        <div class="cart-product-description">
+                                            <h3 class="cart-drop__heading">
+                                                {{ cart_product.name }}
+                                            </h3>
+                                            <i class="fas fa-star star"></i>
+                                            <i class="fas fa-star star"></i>
+                                            <i class="fas fa-star star"></i>
+                                            <i class="fas fa-star star"></i>
+                                            <i class="fas fa-star-half-alt star"></i>
+                                            <p class="cart-drop__quantity"><span data-quant_id="17"></span>
+                                                Price:&nbsp;$&nbsp;{{ cart_product.price }}
+                                            </p>
+                                        </div>
+                                        <i class="fas fa-times-circle shut" data-id="17"></i>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
                     </div>
                     <a class="account" href="#">My&nbsp;Account <img src="{% static 'img/arrow_down.png' %}"
                                                                      alt="arrow_down"></a>

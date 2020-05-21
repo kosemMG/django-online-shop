@@ -15,7 +15,7 @@ def view_cart(request):
     cart_amount = len(products)
     content = {
         'title': title,
-        'products': products,
+        'cart_products': products,
         'cart_amount': cart_amount
     }
     return render(request, 'cartapp/shopping-cart.html', content)

@@ -20,13 +20,22 @@ def main(request):
     title = 'home - ' + SHOP_NAME
     body_class = 'home'
     home_products = Product.objects.filter(category__pk=1).order_by('price')
-    cart_amount = len(Cart.objects.all())
+
+    products = []
+    cart_products = Cart.objects.filter(user=request.user)
+
+    for i, cart_product in enumerate(cart_products):
+        products.append(Product.objects.get(pk=cart_product.product_id))
+
+    cart_amount = len(products)
+
     content = {
         'title': title,
         'body_class': body_class,
         'menu': menu,
         'cart_amount': cart_amount,
-        'products': home_products
+        'products': home_products,
+        'cart_products': products
     }
     return render(request, 'mainapp/index.html', content)
 
