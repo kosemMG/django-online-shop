@@ -54,10 +54,11 @@
                         <div class="cart-drop" id="cart-drop">
                             {% if user.is_authenticated and cart_amount > 0 %}
                                 {% for cart_product in cart_products %}
-                                    <div class="cart-drop-flex" data-elemid="17"><a class="cart-product" href="#">
-                                        <img src="/media/{{ cart_product.product.img }}" alt="product"
-                                             class="cart-product__img">
-                                    </a>
+                                    <div class="cart-drop-flex" data-elemid="17">
+                                        <a class="cart-product" href="{% url 'single_page' cart_product.product.id %}">
+                                            <img src="/media/{{ cart_product.product.img }}" alt="product"
+                                                 class="cart-product__img">
+                                        </a>
                                         <div class="cart-product-description">
                                             <h3 class="cart-drop__heading">
                                                 {{ cart_product.product.name }}
