@@ -47,25 +47,51 @@
                 </div>
                 <div class="header-right">
                     <div class="cart-box">
-                        <div class="goods-number"></div>
-                        <a class="cart" href="{% url 'cart' %}"><img src="{% static 'img/cart.svg' %}" alt="cart"></a>
-                        <div class="cart-drop" id="cart-drop"></div>
+                        {% if user.is_authenticated and cart_amount > 0 %}
+                            <div class="goods-number">{{ cart_amount }}</div>
+                        {% endif %}
+                        <a class="cart" href="{% url 'cart:view' %}"><img src="{% static 'img/cart.svg' %}" alt="cart"></a>
+                        <div class="cart-drop" id="cart-drop">
+                            {% if user.is_authenticated and cart_amount > 0 %}
+                                {% for cart_product in cart_products %}
+                                    <div class="cart-drop-flex" data-elemid="17"><a class="cart-product" href="#">
+                                        <img src="/media/{{ cart_product.img }}" alt="product" class="cart-product__img">
+                                    </a>
+                                        <div class="cart-product-description">
+                                            <h3 class="cart-drop__heading">
+                                                {{ cart_product.name }}
+                                            </h3>
+                                            <i class="fas fa-star star"></i>
+                                            <i class="fas fa-star star"></i>
+                                            <i class="fas fa-star star"></i>
+                                            <i class="fas fa-star star"></i>
+                                            <i class="fas fa-star-half-alt star"></i>
+                                            <p class="cart-drop__quantity"><span data-quant_id="17"></span>
+                                                Price:&nbsp;$&nbsp;{{ cart_product.price }}
+                                            </p>
+                                        </div>
+                                        <i class="fas fa-times-circle shut" data-id="17"></i>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
                     </div>
                     <a class="account" href="#">My&nbsp;Account <img src="{% static 'img/arrow_down.png' %}"
                                                                      alt="arrow_down"></a>
 
                     {% if user.is_authenticated %}
-                        <div>
+                        <div style="color: #222222; font-size: 14px; font-weight: 700; padding: 20px;">
+                            Welcome,
                             <a href="{% url 'auth:edit' %}">
-                                {{ user.first_name|default:'User' }}
+                                {{ user.first_name|default:'User' }}&nbsp;
                             </a>
                         </div>
                     {% endif %}
                     <div>
                         {% if user.is_authenticated %}
-                            <a href="{% url 'auth:logout' %}">Login</a>
+                            <a class="menu__link" href="{% url 'auth:logout' %}">Logout</a>
                         {% else %}
-                            <a href="{% url 'auth:login' %}">Logout</a>
+                            <a class="menu__link" href="{% url 'auth:login' %}">Login</a>
                         {% endif %}
                     </div>
                 </div>
@@ -150,18 +176,18 @@
         </footer>
     {% endblock footer %}
 </div>
-{% block js %}
-    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'js/cart-drop.js' %}"></script>
-    <script src="{% static 'js/products.js' %}"></script>
-    <script>
-        $(document).ready(() => {
-            let source = 'js/get-cart.json',
-                brandCartDrop = new CartDrop(source),
-                products = new Products(source);
-        });
-    </script>
-{% endblock js %}
+{#{% block js %}#}
+{#    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>#}
+{#    <script src="{% static 'js/cart-drop.js' %}"></script>#}
+{#    <script src="{% static 'js/products.js' %}"></script>#}
+{#    <script>#}
+{#        $(document).ready(() => {#}
+{#            let source = 'js/get-cart.json',#}
+{#                brandCartDrop = new CartDrop(source),#}
+{#                products = new Products(source);#}
+{#        });#}
+{#    </script>#}
+{#{% endblock js %}#}
 </body>
 
 </html>

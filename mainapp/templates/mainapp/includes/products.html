@@ -8,7 +8,12 @@
             <p class="product-price">${{ product.price }}</p>
         </a>
         <div class="active">
-            <a href="#" class="add-to-cart rotate-scale-up" data-id="{{ product.id }}"
+            <a {% if user.is_authenticated %}
+                    href="{% url 'cart:add' product.pk %}"
+                {% else %}
+                    href="{% url 'auth:login' %}"
+                {% endif %}
+               class="add-to-cart rotate-scale-up" data-id="{{ product.id }}"
                data-img="{{ product.img }}" data-name="{{ product.name }}" data-color="{{ product.color }}"
                data-size="{{ product.size }}" data-price="{{ product.price }}"
                data-quantity="{{ product.quantity }}"
