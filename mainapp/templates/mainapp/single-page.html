@@ -5,28 +5,29 @@
     <div class="slider">
         <div class="slider-flex container">
             <a href="#" class="prod-arrow transform_scale">&lt;</a>
-            <a href="#" class="prod-img transform_scale_large"><img src="{% static 'img/chair-girl.png' %}" alt="chair girl"></a>
+            <a href="#" class="prod-img transform_scale_large">
+                <img class="single-page__product-img" src="/media/{{ product.img }}" alt="{{ product.name }}">
+            </a>
             <a href="#" class="prod-arrow transform_scale">&gt;</a>
         </div>
     </div>
     <section class="product-description container">
         <h4 class="collection">WOMEN COLLECTION</h4>
         <img src="{% static 'img/line.jpg' %}" alt="line">
-        <h3 class="prod-name">Moschino Cheap And Chic</h3>
+        <h3 class="prod-name">{{ product.name }}</h3>
         <p class="short-description">Compellingly actualize fully researched processes before proactive outsourcing.
             Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize
             parallel core competencies rather than exceptional portals.</p>
         <div class="prod-details">
-            <h4>MATERIAL: <span>COTTON</span></h4>
-            <h4>DESIGNER: <span>BINBURHAN</span></h4>
+            <h4>COLOR: <span>{{ product.color }}</span></h4>
+            <h4>SIZE: <span>{{ product.size }}</span></h4>
         </div>
-        <span class="prod-price">$561</span>
+        <span class="prod-price">${{ product.price }}</span>
         <div class="divider"></div>
         <form class="filter">
             <div class="filter-flex">
                 <div class="prod-filter">
                     <label for="color">CHOOSE COLOR</label>
-                    <!--<input id="color" type="color" value="#ff0000">-->
                     <input id="color" list="dl_color" placeholder="Red">
                     <datalist id="dl_color">
                         <option value="Red">
@@ -55,15 +56,20 @@
                 </div>
             </div>
             <div class="button rotate-scale-up">
-                <button class="add-button add-to-cart" type="button" data-id="25" data-img="img/chair-girl.png"
-                        data-name="MOSCHINO CHEAP AND CHIC" data-color="red" data-size="XII" data-price="561"
-                        data-quantity="1" data-shipping="FREE" data-link="single-page.html">
-                    <img src="{% static 'img/cart-red.svg' %}" alt="red cart"><span>Add to&nbsp;Cart</span>
-                </button>
-                <button class="add-button-hover add-to-cart" type="button" data-id="25" data-img="img/chair-girl.png"
-                        data-name="MOSCHINO CHEAP AND CHIC" data-color="red" data-size="XII" data-price="561"
-                        data-quantity="1" data-shipping="FREE" data-link="single-page.html"><img
-                        src="{% static 'img/cart_white.svg' %}" alt="white cart"><span>Add to&nbsp;Cart</span></button>
+                <a href="{% url 'cart:add' product.pk %}">
+                    <button class="add-button add-to-cart" type="button" data-id="25" data-img="img/chair-girl.png"
+                            data-name="MOSCHINO CHEAP AND CHIC" data-color="red" data-size="XII" data-price="561"
+                            data-quantity="1" data-shipping="FREE" data-link="single-page.html">
+                        <img src="{% static 'img/cart-red.svg' %}" alt="red cart"><span>Add to&nbsp;Cart</span>
+                    </button>
+                    <button class="add-button-hover add-to-cart" type="button" data-id="25"
+                            data-img="img/chair-girl.png"
+                            data-name="MOSCHINO CHEAP AND CHIC" data-color="red" data-size="XII" data-price="561"
+                            data-quantity="1" data-shipping="FREE" data-link="single-page.html"><img
+                            src="{% static 'img/cart_white.svg' %}" alt="white cart"><span>Add to&nbsp;Cart</span>
+                    </button>
+                </a>
+
             </div>
 
         </form>

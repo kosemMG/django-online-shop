@@ -2,7 +2,7 @@
 
 {% for product in products %}
     <div class="item transform_scale">
-        <a href="/{{ product.link }}" class="product">
+        <a href="/{{ product.link }}/{{ product.id }}" class="product">
             <img src="/media/{{ product.img }}" alt="" class="product-img">
             <p class="product-name">{{ product.name }}</p>
             <p class="product-price">${{ product.price }}</p>

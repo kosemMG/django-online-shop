@@ -18,7 +18,7 @@
     </section>
     <div id="cart">
         <table class="products-table container">
-            {% for product in cart_products %}
+            {% for cart_product in cart_products %}
             <tr>
                 <th>Product Details</th>
                 <th>Unit Price</th>
@@ -27,20 +27,24 @@
                 <th>Subtotal</th>
                 <th>ACTION</th>
             </tr>
-            <tr class="cart-item" data-product="{{ product.id }}">
+            <tr class="cart-item" data-product="{{ cart_product.product.id }}">
                 <td>
-                    <a class="prod-info transform_scale" href="/{{ product.link }}">
-                        <img class="cart-product-image" src="/media/{{ product.img }}" alt="product">
-                        <h4 class="product-cart-name">{{ product.name }}</h4>
-                        <p class="prod-det"><span>Color: </span>{{ product.color }}</p>
-                        <p class="prod-det"><span>Size: </span>{{ product.size }}</p>
+                    <a class="prod-info transform_scale" href="/{{ cart_product.product.link }}/{{ cart_product.product.id }}">
+                        <img class="cart-product-image" src="/media/{{ cart_product.product.img }}" alt="product">
+                        <h4 class="product-cart-name">{{ cart_product.product.name }}</h4>
+                        <p class="prod-det"><span>Color: </span>{{ cart_product.product.color }}</p>
+                        <p class="prod-det"><span>Size: </span>{{ cart_product.product.size }}</p>
                     </a>
                 </td>
-                <td>$&nbsp;{{ product.price }}</td>
-                <td><input class="prod-quantity" type="number" value="{{ product.amount }}" name="quant"></td>
-                <td>{{ product.shipping }}</td>
-                <td>$&nbsp;300</td>
-                <td><i class="fas fa-times-circle shut transform_scale" data-id="{{ product.id }}"></i></td>
+                <td>$&nbsp;{{ cart_product.product.price }}</td>
+                <td><input class="prod-quantity" type="number" min="0" value="{{ cart_product.number }}" name="quant"></td>
+                <td>{{ cart_product.product.shipping }}</td>
+                <td>$&nbsp;{{ cart_product.subtotal }}</td>
+                <td>
+                    <a href="{% url 'cart:remove' cart_product.product.id %}">
+                        <i class="fas fa-times-circle shut transform_scale" data-id="{{ cart_product.product.id }}"></i>
+                    </a>
+                </td>
             </tr>
             {% endfor %}
         </table>
@@ -79,8 +83,14 @@
         </article>
         <div class="checkout-box">
             <div class="total-box">
-                <p><span>Sub total</span><span id="subtotal"></span></p>
-                <h3><span>GRAND TOTAL</span><span class="total-price" id="grand-total"></span></h3>
+                {% if cart %}
+                    <p><span>Total number:</span><span id="total-number">
+                        {{ cart.0.total_quantity }}
+                    </span></p>
+                    <h3><span>TOTAL COST</span><span class="total-price" id="grand-total">
+                        ${{ cart.0.total_cost | floatformat:2 }}
+                    </span></h3>
+                {% endif %}
             </div>
             <a class="transform-all_transition" href="{% url 'checkout' %}">proceed to&nbsp;checkout</a>
         </div>
