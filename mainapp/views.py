@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Product
 from cartapp.models import Cart
 
@@ -21,11 +21,18 @@ def main(request):
     body_class = 'home'
     home_products = Product.objects.filter(category__pk=1).order_by('price')
 
-    products = []
-    cart_products = Cart.objects.filter()
+    cart = []
+    if request.user.is_authenticated:
+        cart = Cart.objects.filter(user=request.user)
 
-    for i, cart_product in enumerate(cart_products):
-        products.append(Product.objects.get(pk=cart_product.product_id))
+    products = []
+    for cart_product in cart:
+        product = Product.objects.get(pk=cart_product.product_id)
+        products.append({
+            'product': product,
+            'number': cart_product.amount,
+            'subtotal': product.price * cart_product.amount
+        })
 
     cart_amount = len(products)
 
@@ -35,7 +42,8 @@ def main(request):
         'menu': menu,
         'cart_amount': cart_amount,
         'products': home_products,
-        'cart_products': products
+        'cart_products': products,
+        'cart': cart
     }
     return render(request, 'mainapp/index.html', content)
 
@@ -55,36 +63,63 @@ def product(request):
     title = 'product - ' + SHOP_NAME
     body_class = 'products'
     products = Product.objects.filter(category__pk=2).order_by('price')
+
+    cart = []
+    if request.user.is_authenticated:
+        cart = Cart.objects.filter(user=request.user)
+
+    cart_products = []
+    for cart_product in cart:
+        product = Product.objects.get(pk=cart_product.product_id)
+        cart_products.append({
+            'product': product,
+            'number': cart_product.amount,
+            'subtotal': product.price * cart_product.amount
+        })
+
+    cart_amount = len(products)
+
     content = {
         'title': title,
         'body_class': body_class,
         'menu': menu,
-        'products': products
+        'cart_amount': cart_amount,
+        'products': products,
+        'cart_products': cart_products,
+        'cart': cart
     }
     return render(request, 'mainapp/product.html', content)
 
 
-# def cart(request):
-#     title = 'shopping cart - ' + SHOP_NAME
-#     body_class = 'products'
-#     cart_products = Product.objects.filter(category__pk=4).order_by('price')
-#     content = {
-#         'title': title,
-#         'body_class': body_class,
-#         'menu': menu,
-#         'products': cart_products
-#     }
-#     return render(request, 'mainapp/../cartapp/templates/cartapp/shopping-cart.html', content)
-
-
-def single_page(request):
+def single_page(request, pk):
     title = 'single page - ' + SHOP_NAME
     body_class = 'single-page'
+    single_product = get_object_or_404(Product, pk=pk)
     page_products = Product.objects.filter(category__pk=3).order_by('price')
+
+    cart = []
+    if request.user.is_authenticated:
+        cart = Cart.objects.filter(user=request.user)
+
+    products = []
+    for cart_product in cart:
+        product = Product.objects.get(pk=cart_product.product_id)
+        products.append({
+            'product': product,
+            'number': cart_product.amount,
+            'subtotal': product.price * cart_product.amount
+        })
+
+    cart_amount = len(products)
+
     content = {
         'title': title,
         'body_class': body_class,
         'menu': menu,
-        'products': page_products
+        'cart_amount': cart_amount,
+        'product': single_product,
+        'products': page_products,
+        'cart_products': products,
+        'cart': cart
     }
     return render(request, 'mainapp/single-page.html', content)

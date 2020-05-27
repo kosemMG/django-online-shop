@@ -26,7 +26,7 @@ urlpatterns = [
     path('', mainapp.main, name='home'),
     path('checkout/', mainapp.checkout, name='checkout'),
     path('product/', mainapp.product, name='product'),
-    path('single-page/', mainapp.single_page, name='single_page'),
+    path('single-page/<int:pk>', mainapp.single_page, name='single_page'),
     path('auth/', include('authapp.urls', namespace='auth')),
     path('cart/', include('cartapp.urls', namespace='cart'))
 ]

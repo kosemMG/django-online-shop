@@ -1666,7 +1666,7 @@ header {
     color: #f16d7f;
     font-size: 12px;
     font-weight: 400;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     margin-top: 12px;
 }
 
@@ -2219,4 +2219,8 @@ header {
 
 #my-form {
     width: 420px;
+}
+
+.single-page__product-img {
+    height: 500px;
 }
