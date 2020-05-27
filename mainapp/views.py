@@ -77,7 +77,7 @@ def product(request):
             'subtotal': product.price * cart_product.amount
         })
 
-    cart_amount = len(products)
+    cart_amount = len(cart_products)
 
     content = {
         'title': title,
