@@ -3,7 +3,8 @@ from django.contrib.auth.models import AbstractUser
 
 
 class ProductCategory(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(verbose_name='name', max_length=100)
+    is_active = models.BooleanField(verbose_name='category is active', default=True)
 
     def __str__(self):
         return self.name

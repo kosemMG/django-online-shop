@@ -3,21 +3,24 @@
     "model": "mainapp.productcategory",
     "pk": 1,
     "fields": {
-      "name": "home_products"
+      "name": "home_products",
+      "is_active": true
     }
   },
   {
     "model": "mainapp.productcategory",
     "pk": 2,
     "fields": {
-      "name": "products"
+      "name": "products",
+      "is_active": true
     }
   },
   {
     "model": "mainapp.productcategory",
     "pk": 3,
     "fields": {
-      "name": "page_products"
+      "name": "page_products",
+      "is_active": true
     }
   }
 ]

@@ -91,7 +91,6 @@
 
                     {% if user.is_authenticated %}
                         <div style="color: #222222; font-size: 14px; font-weight: 700; padding: 20px;">
-                            Welcome,
                             <a href="{% url 'auth:edit' %}">
                                 {{ user.first_name|default:'User' }}&nbsp;
                             </a>
@@ -102,6 +101,11 @@
                             <a class="menu__link" href="{% url 'auth:logout' %}">Logout</a>
                         {% else %}
                             <a class="menu__link" href="{% url 'auth:login' %}">Login</a>
+                        {% endif %}
+                    </div>
+                    <div>
+                        {% if user.is_superuser %}
+                            <a class="menu__link" href="{% url 'admin:users' %}">Admin&nbsp;panel</a>
                         {% endif %}
                     </div>
                 </div>

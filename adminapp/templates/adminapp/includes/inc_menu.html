@@ -1,0 +1,14 @@
+<ul class="menu container">
+    <li class="menu__list transform_scale"><a class="menu__link" href="{% url 'home' %}">to website</a></li>
+    <li class="menu__list transform_scale">
+        <a href="{% url 'admin:users' %}" class="menu__link {% if request.resolver_match.url_name == 'users' %}active{% endif %}">
+            users
+        </a>
+    </li>
+    <li class="menu__list transform_scale">
+        <a href="{% url 'admin:categories' %}"
+            class="menu__link {% if request.resolver_match.url_name == 'categories' or category.name %}active{% endif %}">
+            categories{% if category %}:<span>{{ category.name }}</span>{% endif %}
+        </a>
+    </li>
+</ul>
