@@ -16,19 +16,18 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include
-from django.contrib import admin
 from django.urls import path
 
 import mainapp.views as mainapp
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', mainapp.main, name='home'),
     path('checkout/', mainapp.checkout, name='checkout'),
     path('product/', mainapp.product, name='product'),
     path('single-page/<int:pk>', mainapp.single_page, name='single_page'),
     path('auth/', include('authapp.urls', namespace='auth')),
-    path('cart/', include('cartapp.urls', namespace='cart'))
+    path('cart/', include('cartapp.urls', namespace='cart')),
+    path('admin/', include('adminapp.urls', namespace='admin'))
 ]
 
 if settings.DEBUG:
